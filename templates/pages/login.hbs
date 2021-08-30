@@ -1,0 +1,97 @@
+{{>header}}
+
+<body class="bg-dark">
+    <div class="account-pages mt-5 mb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="text-center">
+                        <a href="#" class="logo">
+                            <img src="#" alt="" height="22" class="logo-light mx-auto">
+                            <img src="#" alt="" height="22" class="logo-dark mx-auto">
+                        </a>
+                        <p class="text-muted mt-2 mb-4">Welcome!</p>
+                    </div>
+                    <div class="card">
+
+                        <div class="card-body p-4">
+
+                            <div class="text-center mb-4">
+                                <h4 class="text-uppercase mt-0">Sign In</h4>
+                            </div>
+
+                            <form action="/login" method="POST">
+
+                                <div class="form-group mb-3">
+                                    {{#if sucess}} <p style="color: red;">Invalid Details</p> {{/if}}
+                                    <p id="emptyField" style="color: red;"></p>
+                                    <label for="emailaddress">Email address</label>
+                                    <input class="form-control" {{#if sucess}} style="border-color:red ;" {{/if}}
+                                       required="" name="email" type="email" id="emailaddress"
+                                        placeholder="Enter your email" value="">
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" {{#if sucess}} style="border-color:red ;" {{/if}}
+                                      required=""  name="password" type="password" id="password"
+                                        placeholder="Enter your password" value="">
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin"
+                                            checked>
+                                        <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 text-center">
+                                    <button class="btn btn-primary btn-block" type="submit" id="submit"> Log In </button>
+                                </div>
+
+                            </form>
+
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p> <a href="/recover" class="text-muted ml-1"><i class="fa fa-lock mr-1"></i>Forgot your
+                                    password?</a></p>
+                            <p class="text-muted">Don't have an account? <a href="/register"
+                                    class="text-light ml-1"><b>Sign Up</b></a></p>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+</body>
+<script>
+ document.getElementById("submit").addEventListener("click", function(){
+ const email = document.getElementById("emailaddress").value;
+ const password = document.getElementById("password").value;
+
+ if(email==""){
+     document.getElementById("emailaddress").setAttribute("style","border-color:red;");
+     document.getElementById("emptyField").innerHTML ="Please Enter Data";
+     
+     
+ }
+  if(password==""){
+     document.getElementById("password").setAttribute("style","border-color:red;");
+     document.getElementById("emptyField").innerHTML ="Please Enter Data";
+     return false;
+     
+ }
+});
+</script>
+
+</html>
